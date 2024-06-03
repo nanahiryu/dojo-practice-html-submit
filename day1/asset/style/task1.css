@@ -32,11 +32,11 @@ header h2 {
   font-weight: 400;
 }
 img {
+  margin: 8px 0;
   width: 90%;
 }
 
 .img-wrapper {
-  padding: 8px 0;
   display: flex;
   justify-content: center;
 }
