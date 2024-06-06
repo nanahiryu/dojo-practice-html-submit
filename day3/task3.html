@@ -120,20 +120,21 @@
           deleteAuth: Grp.sales,
         },
       };
+      console.log(fileManage);
       // 課題2
-      Object.keys(fileManage).forEach((fileId) => {
-        Object.keys(fileManage[fileId]).forEach((fileObjKey) => {
-          const tdTag = document.getElementById(`${fileId}-${fileObjKey}`);
-          tdTag.textContent = fileManage[fileId][fileObjKey];
+      Object.keys(fileManage).forEach((folderId) => {
+        Object.keys(fileManage[folderId]).forEach((folderObjKey) => {
+          const tdTag = document.getElementById(`${folderId}-${folderObjKey}`);
+          tdTag.textContent = fileManage[folderId][folderObjKey];
         });
       });
       // 課題3
       const authAllListTag = document.getElementById("list");
       Object.keys(fileManage)
-        .filter((fileId) => fileManage[fileId].viewAuth === Grp.all)
-        .forEach((fileId) => {
+        .filter((folderId) => fileManage[folderId].viewAuth === Grp.all)
+        .forEach((folderId) => {
           const newLi = document.createElement("li");
-          newLi.textContent = fileManage[fileId].folderName;
+          newLi.textContent = fileManage[folderId].folderName;
           authAllListTag.appendChild(newLi);
         });
     </script>
