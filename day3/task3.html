@@ -127,6 +127,15 @@
           tdTag.textContent = fileManage[fileId][fileObjKey];
         });
       });
+      // 課題3
+      const authAllListTag = document.getElementById("list");
+      Object.keys(fileManage)
+        .filter((fileId) => fileManage[fileId].viewAuth === Grp.all)
+        .forEach((fileId) => {
+          const newLi = document.createElement("li");
+          newLi.textContent = fileManage[fileId].folderName;
+          authAllListTag.appendChild(newLi);
+        });
     </script>
   </body>
 </html>
