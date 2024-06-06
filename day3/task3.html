@@ -120,8 +120,13 @@
           deleteAuth: Grp.sales,
         },
       };
-
-      console.log(fileManage);
+      // 課題2
+      Object.keys(fileManage).forEach((fileId) => {
+        Object.keys(fileManage[fileId]).forEach((fileObjKey) => {
+          const tdTag = document.getElementById(`${fileId}-${fileObjKey}`);
+          tdTag.textContent = fileManage[fileId][fileObjKey];
+        });
+      });
     </script>
   </body>
 </html>
