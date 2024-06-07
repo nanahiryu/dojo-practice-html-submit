@@ -94,20 +94,7 @@
 
         priceTag.textContent = 3900 + addedSecureValue + addedDiskValue;
       };
-
-      checkBoxTags[0].onchange = (e) => {
-        updatePrice();
-      };
-
-      checkBoxTags[1].onchange = (e) => {
-        updatePrice();
-      };
-
-      selectTags[0].onchange = (e) => {
-        updatePrice();
-      };
-
-      selectTags[1].onchange = (e) => {
+      document.getElementById("btn").onclick = (e) => {
         updatePrice();
       };
     </script>
