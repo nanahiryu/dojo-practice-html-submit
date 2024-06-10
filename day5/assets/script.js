@@ -6,6 +6,10 @@ const categoryObj = {
   ir: "IR 情報",
 };
 
+const setNewsNumLimit = (data, limit) => {
+  return data.slice(0, limit);
+};
+
 const truncate = (str, len) => {
   return str.length <= len ? str : `${str.substr(0, len)}...`;
 };
@@ -29,7 +33,9 @@ const assignCategoryClass = (tag, categoryName) => {
 const setNewsList = (data) => {
   const tableTag = document.getElementById("news-table");
   const sortedData = sortNewsListByDate(data);
-  sortedData.forEach((datum) => {
+  const limitedData = setNewsNumLimit(sortedData, 3);
+
+  limitedData.forEach((datum) => {
     const trTag = document.createElement("tr");
     const dateTdTag = document.createElement("td");
     const categoryTdTag = document.createElement("td");
