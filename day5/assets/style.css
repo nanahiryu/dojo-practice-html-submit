@@ -1,0 +1,29 @@
+table {
+  border-collapse: collapse;
+}
+
+td {
+  padding: 12px 16px;
+}
+
+.date-cell {
+  text-align: center;
+  min-width: 112px;
+}
+
+.category-cell {
+  min-width: 72px;
+  color: #fff;
+}
+
+.cat-comp {
+  background-color: #74b9ff;
+}
+
+.cat-ir {
+  background-color: #ff7675;
+}
+
+.cat-prod {
+  background-color: #54efc4;
+}
