@@ -6,21 +6,9 @@ const categoryObj = {
   ir: "IR 情報",
 };
 
-const setNewsNumLimit = (data, limit) => {
-  return data.slice(0, limit);
-};
-
 const truncate = (str, len) => {
   return str.length <= len ? str : `${str.substr(0, len)}...`;
 };
-
-const sortNewsListByDate = (data) => {
-  const sortedData = data.sort(
-    (a, b) => Date.parse(b.day.value) - Date.parse(a.day.value)
-  );
-  return sortedData;
-};
-
 const assignCategoryClass = (tag, categoryName) => {
   Object.keys(categoryObj).forEach((key) => {
     if (categoryName === categoryObj[key]) {
@@ -32,10 +20,7 @@ const assignCategoryClass = (tag, categoryName) => {
 
 const setNewsList = (data) => {
   const tableTag = document.getElementById("news-table");
-  const sortedData = sortNewsListByDate(data);
-  const limitedData = setNewsNumLimit(sortedData, 3);
-
-  limitedData.forEach((datum) => {
+  data.forEach((datum) => {
     const trTag = document.createElement("tr");
     const dateTdTag = document.createElement("td");
     const categoryTdTag = document.createElement("td");
@@ -71,6 +56,7 @@ const fetchEventList = () => {
       {
         params: {
           id: "dojo",
+          query: "order by day desc limit 3",
         },
       }
     )
