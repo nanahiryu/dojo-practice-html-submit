@@ -6,6 +6,10 @@ const categoryObj = {
   ir: "IR 情報",
 };
 
+const truncate = (str, len) => {
+  return str.length <= len ? str : `${str.substr(0, len)}...`;
+};
+
 const sortNewsListByDate = (data) => {
   const sortedData = data.sort(
     (a, b) => Date.parse(b.day.value) - Date.parse(a.day.value)
@@ -40,7 +44,7 @@ const setNewsList = (data) => {
 
     dateTdTag.textContent = datum.day.value;
     categoryTdTag.textContent = datum.category.value;
-    titleATag.textContent = datum.content.value;
+    titleATag.textContent = truncate(datum.content.value, 30);
     titleATag.href = datum.url.value;
     titleATag.target = datum.target.value;
 
