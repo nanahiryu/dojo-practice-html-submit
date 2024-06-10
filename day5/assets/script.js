@@ -6,6 +6,13 @@ const categoryObj = {
   ir: "IR 情報",
 };
 
+const sortNewsListByDate = (data) => {
+  const sortedData = data.sort(
+    (a, b) => Date.parse(b.day.value) - Date.parse(a.day.value)
+  );
+  return sortedData;
+};
+
 const assignCategoryClass = (tag, categoryName) => {
   Object.keys(categoryObj).forEach((key) => {
     if (categoryName === categoryObj[key]) {
@@ -17,7 +24,8 @@ const assignCategoryClass = (tag, categoryName) => {
 
 const setNewsList = (data) => {
   const tableTag = document.getElementById("news-table");
-  data.forEach((datum) => {
+  const sortedData = sortNewsListByDate(data);
+  sortedData.forEach((datum) => {
     const trTag = document.createElement("tr");
     const dateTdTag = document.createElement("td");
     const categoryTdTag = document.createElement("td");
