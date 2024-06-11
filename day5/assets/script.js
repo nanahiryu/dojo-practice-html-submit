@@ -1,17 +1,17 @@
 "use strict";
 
 const categoryObj = {
-  comp: "企業情報",
-  prod: "製品",
-  ir: "IR 情報",
+  company: "企業情報",
+  product: "製品",
+  ir: "IR情報",
 };
 
 const truncate = (str, len) => {
   return str.length <= len ? str : `${str.substr(0, len)}...`;
 };
-const assignCategoryClass = (tag, categoryName) => {
+const assignCategoryClass = (tag, categoryLabel) => {
   Object.keys(categoryObj).forEach((key) => {
-    if (categoryName === categoryObj[key]) {
+    if (categoryLabel === key) {
       tag.classList.add(`cat-${key}`);
       return;
     }
@@ -31,10 +31,10 @@ const setNewsList = (data) => {
     categoryTdTag.classList.add("category-cell");
     titleTdTag.classList.add("title-cell");
 
-    assignCategoryClass(categoryTdTag, datum.category.value);
-
+    assignCategoryClass(categoryTdTag, datum.label.value);
+  
     dateTdTag.textContent = datum.day.value;
-    categoryTdTag.textContent = datum.category.value;
+    categoryTdTag.textContent = categoryObj[datum.label.value];
     titleATag.textContent = truncate(datum.content.value, 30);
     titleATag.href = datum.url.value;
     titleATag.target = datum.target.value;
