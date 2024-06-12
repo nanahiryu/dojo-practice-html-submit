@@ -9,15 +9,13 @@
     "公明正大",
   ];
   kintone.events.on("app.record.create.show", (event) => {
-    const record = event.record;
     const newTableArray = [];
-    actionArray.forEach((action, index) => {
+    actionArray.forEach((action) => {
       const newRow = {
-        id: `${index}`,
         value: {
           Action5: {
             type: "DROP_DOWN",
-            value: `${action}`,
+            value: action,
           },
           状況: {
             type: "CHECK_BOX",
